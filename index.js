@@ -86,10 +86,16 @@ const allWagesFor = function () {
 
 
 
-function calculatePayroll (){
-    let sumOwed = this.allWagesFor.reduce((salary, days) => {
-     return salary + wagesEarnedOnDate(days)
-   
+let findEmployeeByFirstName = function(srcArray, firstName) {
+    return srcArray.find(function(rec){
+      return rec.firstName === firstName
     })
-   }
-
+  }
+  
+  let calculatePayroll = function(arrayOfEmployeeRecords){
+      return arrayOfEmployeeRecords.reduce(function(memo, rec){
+          return memo + allWagesFor.call(rec)
+      }, 0)
+  }
+  
+  
